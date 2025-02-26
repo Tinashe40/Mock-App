@@ -1,8 +1,11 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/auth";
+const API_URL = import.meta.env.VITE_BASE_URL + "/api/auth"; // Use environment variable
 
 const getToken = () => localStorage.getItem("token");
+export const logoutUser = () => {
+  localStorage.removeItem("token");  // ✅ Remove token
+};
 
 export const getUserDetails = async () => {
   try {
