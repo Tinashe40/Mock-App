@@ -8,7 +8,7 @@ interface RegisterForm {
   email: string;
   password: string;
 }
-
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 const Register: React.FC = () => {
   const { register, handleSubmit } = useForm<RegisterForm>();
 
@@ -16,7 +16,7 @@ const Register: React.FC = () => {
     console.log("Sending Data:", data); // Debugging log
   
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/register", data, {
+      const response = await axios.post(`${BASE_URL}`, data, {
         headers: {
           "Content-Type": "application/json",  // Ensure correct Content-Type
         },
